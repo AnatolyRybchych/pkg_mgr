@@ -1,9 +1,8 @@
+ifeq ($(PKG_MGR_SLAVE),)
 
 ifeq ($(TOP_DIR),)
 TOP_DIR:=$(realpath .)
 endif
-
-ifeq ($(PKG_MGR_SLAVE),)
 
 export TOP_DIR
 export PKG_REGISTRY_DIR		:=	$(TOP_DIR)/packages
@@ -74,6 +73,6 @@ $(foreach package, $(PACKAGE_MAKEFILES), $(eval $(call Package/Define, $(package
 
 .PHONY: all clean download build
 
+export PKG_MGR_SLAVE:=yes
 endif
 
-export PKG_MGR_SLAVE:=yes
